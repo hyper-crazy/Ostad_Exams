@@ -14,11 +14,11 @@ void main() {
     String name = students[i]["name"];
     List<int> scores = List<int>.from(students[i]["scores"]);
 
+    // Finding the average
     int sum = 0;
     for (int j = 0; j < scores.length; j++) {
       sum += scores[j];
     }
-
     double avg = sum / scores.length;
     averages[name] = double.parse(avg.toStringAsFixed(2));
   }
