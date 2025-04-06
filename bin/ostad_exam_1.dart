@@ -1,31 +1,37 @@
-
 void main() {
-  // Sample input
+  // List of students with their names and scores
   List<Map<String, dynamic>> students = [
     {"name": "Alice", "scores": [85, 90, 78]},
     {"name": "Bob", "scores": [88, 76, 95]},
-    {"name": "Charlie", "scores": [90, 92, 85]},
+    {"name": "Charlie", "scores": [90, 92, 85]}
   ];
 
-  // Map to store name and average score
-  Map<String, double> averageScores = {};
+  // Map to store the average score for each student
+  Map<String, double> averages = {};
 
-  // Calculate average scores and round to 2 decimal places
-  for (var student in students) {
-    String name = student["name"];
-    List<int> scores = List<int>.from(student["scores"]);
-    double average = scores.reduce((a, b) => a + b) / scores.length;
-    averageScores[name] = double.parse(average.toStringAsFixed(2));
+  // Loop through each student
+  for (int i = 0; i < students.length; i++) {
+    String name = students[i]["name"];
+    List<int> scores = List<int>.from(students[i]["scores"]);
+
+    int sum = 0;
+    for (int j = 0; j < scores.length; j++) {
+      sum += scores[j];
+    }
+
+    double avg = sum / scores.length;
+    averages[name] = double.parse(avg.toStringAsFixed(2));
   }
 
-  // Sort the map by values in descending order
-  var sortedEntries = averageScores.entries.toList()
+  // Sort the map by values (average scores) in descending order
+  var sortedEntries = averages.entries.toList()
     ..sort((a, b) => b.value.compareTo(a.value));
 
-  Map<String, double> sortedAverageScores = {
+  // Convert back to a map
+  Map<String, double> sortedAverages = {
     for (var entry in sortedEntries) entry.key: entry.value
   };
 
-  // Print the final result
-  print(sortedAverageScores);
+  // Print the final sorted result
+  print(sortedAverages);
 }
