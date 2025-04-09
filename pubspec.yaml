@@ -1,10 +1,10 @@
-name: Ostad_Exams
+name: ostad_exams
 description: A sample command-line application with basic argument parsing.
 version: 0.0.1
 # repository: https://github.com/my_org/my_repo
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.7.0
 
 # Add regular dependencies here.
 dependencies:
